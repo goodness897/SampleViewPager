@@ -10,43 +10,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:listitem="@layout/pager_item" />
+        tools:listitem="@layout/pager_item"
+        android:layout_above="@+id/viewPagerIndicator" />
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/viewPagerCountDots"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_above="@+id/viewPagerIndicator" />
+
+
+    <LinearLayout
         android:id="@+id/viewPagerIndicator"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="5dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/viewPagerCountDots"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:orientation="horizontal" />
+            <Button
+                android:text="로그인"
+                android:id="@+id/btn_next"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
 
-        <ImageButton
-            android:id="@+id/btn_next"
-            android:layout_width="42dip"
-            android:layout_height="42dip"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dip"
-            android:background="@android:color/transparent"
-            android:src="@android:drawable/ic_media_next" />
+            <Button
+                android:text="회원가입"
+                android:id="@+id/btn_finish"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
 
-        <ImageButton
-            android:id="@+id/btn_finish"
-            android:layout_width="42dip"
-            android:layout_height="42dip"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="15dip"
-            android:background="@android:color/transparent"
-            android:contentDescription="Let's start"
-            android:src="@android:drawable/ic_media_previous" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

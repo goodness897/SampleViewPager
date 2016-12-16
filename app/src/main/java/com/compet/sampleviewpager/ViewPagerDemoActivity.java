@@ -23,11 +23,9 @@ public class ViewPagerDemoActivity extends AppCompatActivity
 
     private ViewPagerDemoAdapter mAdapter;
 
-    private int[] mImageResources = {R.mipmap.ic_launcher,
-                                     R.mipmap.ic_launcher,
-                                     R.mipmap.ic_launcher,
-                                     R.mipmap.ic_launcher,
-                                     R.mipmap.ic_launcher};
+    private int[] mImageResources = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+
+    private String[] mTextResources = {"측정과 기록을 한번에!", "나의 변화를 한눈에!", "관리와 공유를 하나로!"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +33,11 @@ public class ViewPagerDemoActivity extends AppCompatActivity
         setContentView(R.layout.activity_view_pager_demo);
 
         intro_images = (ViewPager)findViewById(R.id.pager_introduction);
-        btnNext = (ImageButton)findViewById(R.id.btn_next);
-        btnFinish = (ImageButton)findViewById(R.id.btn_finish);
+
 
         pager_indicator = (LinearLayout)findViewById(R.id.viewPagerCountDots);
 
-        btnNext.setOnClickListener(this);
-        btnFinish.setOnClickListener(this);
-
-        mAdapter = new ViewPagerDemoAdapter(ViewPagerDemoActivity.this, mImageResources);
+        mAdapter = new ViewPagerDemoAdapter(ViewPagerDemoActivity.this, mImageResources, mTextResources);
         intro_images.setAdapter(mAdapter);
         intro_images.setCurrentItem(0);
         intro_images.setOnPageChangeListener(this);
@@ -62,7 +56,7 @@ public class ViewPagerDemoActivity extends AppCompatActivity
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                                                                              LinearLayout.LayoutParams.WRAP_CONTENT);
 
-            params.setMargins(4, 0, 4, 0);
+            params.setMargins(16, 0, 16, 0);
 
             pager_indicator.addView(dots[i], params);
         }
@@ -92,16 +86,6 @@ public class ViewPagerDemoActivity extends AppCompatActivity
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_next:
-                intro_images.setCurrentItem((intro_images.getCurrentItem() < dotsCount) ? intro_images.getCurrentItem()
-                                                                                          + 1
-                                                                                        : 0);
-                break;
 
-            case R.id.btn_finish:
-                intro_images.setCurrentItem((intro_images.getCurrentItem() < dotsCount) ? intro_images.getCurrentItem() - 1 : 0);
-                break;
-        }
     }
 }
